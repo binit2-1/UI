@@ -20,20 +20,36 @@ const Username: React.FC = () => {
   }
 
   return (
-    <div className="flex flex-col items-center">
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       {isEditing ? (
         <input
           type="text"
           value={username}
           onChange={handleUsernameChange}
-          className="bg-space-blue text-neon-blue border-2 border-neon-blue rounded px-2 py-1 text-center pixel-borders"
+          style={{
+            backgroundColor: 'rgba(10, 20, 30, 0.8)',
+            color: '#00FFFF',
+            border: '2px solid #00FFFF',
+            borderRadius: '4px',
+            padding: '4px 8px',
+            textAlign: 'center',
+          }}
         />
       ) : (
-        <span className="text-neon-blue text-lg">{username}</span>
+        <span style={{ color: '#00FFFF', fontSize: '18px' }}>{username}</span>
       )}
       <button
         onClick={toggleEdit}
-        className="mt-2 text-xs bg-neon-green text-space-blue px-2 py-1 rounded pixel-borders"
+        style={{
+          marginTop: '8px',
+          fontSize: '12px',
+          backgroundColor: '#00FF00',
+          color: '#0A141E',
+          padding: '4px 8px',
+          borderRadius: '4px',
+          border: '2px solid #00FFFF',
+          cursor: 'pointer',
+        }}
       >
         {isEditing ? 'Save' : 'Change Username'}
       </button>

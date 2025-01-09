@@ -12,26 +12,49 @@ const GameLayout: React.FC<GameLayoutProps> = ({ walletAddress }) => {
   const [currentPage, setCurrentPage] = useState<'home' | 'play'>('home')
 
   return (
-    <div className="min-h-screen">
-      <nav className="fixed top-0 left-0 right-0 z-20 flex justify-center space-x-2 p-2 bg-space-blue bg-opacity-80">
+    <div style={{ minHeight: '100vh' }}>
+      <nav style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 20,
+        display: 'flex',
+        justifyContent: 'center',
+        gap: '8px',
+        padding: '8px',
+        backgroundColor: 'rgba(10, 20, 30, 0.8)'
+      }}>
         <button
           onClick={() => setCurrentPage('home')}
-          className={`px-3 py-1 rounded-lg text-xs pixel-borders pixel-text ${
-            currentPage === 'home' ? 'bg-neon-green text-space-blue' : 'bg-space-blue text-neon-blue'
-          }`}
+          style={{
+            padding: '8px 12px',
+            borderRadius: '8px',
+            fontSize: '14px',
+            border: '2px solid #00FFFF',
+            cursor: 'pointer',
+            backgroundColor: currentPage === 'home' ? '#00FF00' : 'rgba(10, 20, 30, 0.8)',
+            color: currentPage === 'home' ? '#0A141E' : '#00FFFF'
+          }}
         >
           Home
         </button>
         <button
           onClick={() => setCurrentPage('play')}
-          className={`px-3 py-1 rounded-lg text-xs pixel-borders pixel-text ${
-            currentPage === 'play' ? 'bg-neon-green text-space-blue' : 'bg-space-blue text-neon-blue'
-          }`}
+          style={{
+            padding: '8px 12px',
+            borderRadius: '8px',
+            fontSize: '14px',
+            border: '2px solid #00FFFF',
+            cursor: 'pointer',
+            backgroundColor: currentPage === 'play' ? '#00FF00' : 'rgba(10, 20, 30, 0.8)',
+            color: currentPage === 'play' ? '#0A141E' : '#00FFFF'
+          }}
         >
           Play Game
         </button>
       </nav>
-      <div className="pt-12">
+      <div style={{ paddingTop: '72px' }}> {/* Adjusted padding to account for nav height */}
         {currentPage === 'home' ? (
           <HomePage walletAddress={walletAddress} />
         ) : (

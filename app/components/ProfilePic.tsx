@@ -1,5 +1,3 @@
-'use client'
-
 import { useState } from 'react'
 
 const ProfilePic: React.FC = () => {
@@ -17,13 +15,32 @@ const ProfilePic: React.FC = () => {
   }
 
   return (
-    <div className="flex flex-col items-center">
-      <div className="w-24 h-24 rounded-full overflow-hidden pixel-borders mb-2">
-        <img src={pfp} alt="Profile" className="w-full h-full object-cover" />
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <div style={{ 
+        width: '96px', 
+        height: '96px', 
+        borderRadius: '50%', 
+        overflow: 'hidden', 
+        marginBottom: '8px',
+        border: '2px solid #00FFFF' 
+      }}>
+        <img 
+          src={pfp} 
+          alt="Profile" 
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+        />
       </div>
-      <label className="cursor-pointer bg-neon-blue text-space-blue px-3 py-1 rounded pixel-borders text-xs">
+      <label style={{ 
+        cursor: 'pointer', 
+        backgroundColor: '#00FFFF', 
+        color: '#0A141E', 
+        padding: '8px 12px', 
+        borderRadius: '4px', 
+        fontSize: '14px',
+        border: '2px solid #00FFFF'
+      }}>
         Change PFP
-        <input type="file" className="hidden" onChange={handlePfpChange} accept="image/*" />
+        <input type="file" style={{ display: 'none' }} onChange={handlePfpChange} accept="image/*" />
       </label>
     </div>
   )

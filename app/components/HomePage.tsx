@@ -34,29 +34,62 @@ const HomePage: React.FC<HomePageProps> = ({ walletAddress }) => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <div style={{ 
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'center', 
+      position: 'relative', 
+      overflow: 'hidden', 
+      minHeight: '100vh' 
+    }}>
       <Background />
-      <div className="w-full max-w-md p-8 space-y-8 bg-space-blue bg-opacity-80 rounded-lg border-2 border-neon-blue pixel-borders relative z-10">
-        <h1 className="text-xl font-bold text-neon-green mb-6 text-center pixel-borders p-2">
+      <div style={{ 
+        width: '100%', 
+        maxWidth: '600px', 
+        padding: '32px', 
+        backgroundColor: 'rgba(10, 20, 30, 0.8)', 
+        border: '2px solid #00FFFF', 
+        borderRadius: '8px', 
+        position: 'relative', 
+        zIndex: 10 
+      }}>
+        <h1 style={{ 
+          fontSize: '24px', 
+          fontWeight: 'bold', 
+          color: '#00FF00', 
+          marginBottom: '24px', 
+          textAlign: 'center', 
+          border: '2px solid #00FFFF', 
+          padding: '8px' 
+        }}>
           Welcome to CosmicKit
         </h1>
-        <div className="space-y-6">
+        <div style={{ color: '#00FFFF', fontSize: '14px', gap: '16px', display: 'flex', flexDirection: 'column' }}>
           <ProfilePic />
           <Username />
-          <div className="text-neon-blue text-xs space-y-4 pixel-text">
-            <p className="break-all">Wallet: {walletAddress}</p>
+          <div style={{display: 'flex', flexDirection: 'column', gap: '10px'}}>
+            <p style={{ wordBreak: 'break-all' }}>Wallet: {walletAddress}</p>
             <p>10 in-game points = 1 DuckChain token</p>
             <p>Total Points: {points}</p>
             <p>DuckChain Tokens: {duckchainTokens}</p>
           </div>
-          <button 
-            onClick={handleRedeemRewards}
-            className="w-full p-3 bg-neon-green text-space-blue rounded-lg pixel-borders hover:bg-neon-blue transition-colors duration-300 pixel-text"
+          <button
+            onClick={handleRedeemRewards} 
+            style={{ 
+              width: '100%', 
+              padding: '12px', 
+              backgroundColor: '#00FF00', 
+              color: '#0A141E', 
+              borderRadius: '8px', 
+              border: '2px solid #00FFFF', 
+              cursor: 'pointer', 
+              transition: 'background-color 0.3s' 
+            }}
           >
             Redeem Rewards
           </button>
           {redeemMessage && (
-            <p className="text-neon-green text-center pixel-text">{redeemMessage}</p>
+            <p style={{ color: '#00FF00', textAlign: 'center' }}>{redeemMessage}</p>
           )}
         </div>
       </div>

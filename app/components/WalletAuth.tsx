@@ -1,9 +1,71 @@
-'use client'
-
 import React, { useState } from 'react'
-import { Loader2, Wallet } from 'lucide-react'
+// import { Loader2, Wallet } from 'lucide-react'
 import Background from './Background'
 
+const styles = {
+  container: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'relative',
+    overflow: 'hidden',
+    minHeight: '100vh',
+  },
+  innerContainer: {
+    width: '100%',
+    maxWidth: '600px',
+    padding: '32px',
+    backgroundColor: 'rgba(10, 20, 30, 0.8)',
+    border: '2px solid #00FFFF',
+    borderRadius: '8px',
+    position: 'relative',
+    zIndex: 10,
+  },
+  h1: {
+    fontSize: '24px',
+    fontWeight: 'bold',
+    color: '#00FF00',
+    marginBottom: '24px',
+    textAlign: 'center',
+    border: '2px solid #00FFFF',
+    padding: '8px',
+  },
+  p: {
+    color: '#00FFFF',
+    fontSize: '14px',
+  },
+  input: {
+    width: '100%',
+    padding: '12px',
+    backgroundColor: '#333',
+    border: '2px solid #00FFFF',
+    color: '#fff',
+    borderRadius: '8px',
+    outline: 'none',
+  },
+  button: {
+    width: '100%',
+    padding: '12px',
+    backgroundColor: '#00FF00',
+    color: '#0A141E',
+    borderRadius: '8px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '8px',
+    transition: 'background-color 0.3s',
+    border: '2px solid #00FFFF',
+    cursor: 'pointer',
+  },
+  error: {
+    padding: '16px',
+    backgroundColor: 'rgba(255, 0, 0, 0.1)',
+    border: '2px solid red',
+    color: 'red',
+    borderRadius: '8px',
+    fontSize: '14px',
+  },
+}
 interface WalletAuthProps {
   onConnect: (address: string) => void
 }
@@ -42,15 +104,15 @@ const WalletAuth: React.FC<WalletAuthProps> = ({ onConnect }) => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <div style={styles.container}>
       <Background />
-      <div className="w-full max-w-md p-8 space-y-8 bg-space-blue bg-opacity-80 rounded-lg border-2 border-neon-blue pixel-borders relative z-10">
+      <div style={styles.innerContainer}>
         {/* Header */}
-        <div className="text-center space-y-4">
-          <h1 className="text-xl font-bold text-neon-green mb-6 text-center pixel-borders p-2">
+        <div>
+          <h1 style={styles.h1}>
             CosmicKit
           </h1>
-          <p className="text-neon-blue text-xs pixel-text">
+          <p style={styles.p}>
             Connect Your Wallet to Play!
           </p>
         </div>
@@ -62,7 +124,7 @@ const WalletAuth: React.FC<WalletAuthProps> = ({ onConnect }) => {
             <input
               type="text"
               value={formState.walletNumber}
-              onChange={(e) => setFormState(prev => ({ ...prev, walletNumber: e.target.value }))}
+              onChange={e => setFormState(prev => ({ ...prev, walletNumber: e.target.value }))}
               className="w-full p-3 bg-gray-800 rounded-lg border-2 border-neon-blue text-white focus:outline-none focus:border-neon-green pixel-borders"
               placeholder="Enter wallet number"
             />
@@ -75,11 +137,11 @@ const WalletAuth: React.FC<WalletAuthProps> = ({ onConnect }) => {
             disabled={formState.isLoading}
           >
             {formState.isLoading ? (
-              <Loader2 className="animate-spin" />
+              <span>Loading...</span>
             ) : (
               <>
-                <Wallet size={20} />
-                <span className="text-xs pixel-text">Connect TON Wallet</span>
+                <span>Wallet</span>
+                <span>Connect TON Wallet</span>
               </>
             )}
           </button>

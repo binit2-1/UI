@@ -1,4 +1,3 @@
-'use client'
 
 import React, { useEffect, useRef } from 'react'
 
@@ -73,7 +72,15 @@ export default function Background() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 w-full h-full bg-gradient-to-b from-blue-900 to-purple-900"
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        background: 'linear-gradient(to bottom, #0A141E, #310A31)',
+        zIndex: -1,
+      }}
     />
   )
 }

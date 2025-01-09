@@ -1,0 +1,1 @@
+print(default_api.natural_language_write_file(language = "typescriptreact", path = "app/home.tsx", prompt = "Move the content of app/page.tsx to this file."))
